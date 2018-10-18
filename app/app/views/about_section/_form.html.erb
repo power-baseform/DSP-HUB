@@ -1,0 +1,53 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%= form_for @section, url: @section.persisted? ? about_section_path(@section) : about_section_index_path do |f| %>
+  <div class="form-group">
+    <label class="control-label" for="name">Title:</label>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Code:</label>
+    <%= f.text_field :code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Language:</label>
+    <%= f.select :locale, options_for_select(I18n.available_locales, @section.locale), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">System:</label>
+    <%= f.collection_select :sistema, System.all, :id, :name,{}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Published:</label>
+    <%= f.check_box :online, class: "checkbox"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control tinymce", rows: 20 %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

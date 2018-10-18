@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: bf_powerhub
+  host: <%= ENV['PG_SERVER'] %>
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PW'] %>
+  schema_search_path: "participantes, basedados, processos"
+test:
+  <<: *default
+  database: powerhub_rails_42_test
+production:
+  <<: *default
+  host: <%= ENV['PG_SERVER'] %>
+  database: <%= ENV['PG_DATABASE'] %>
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PW'] %>

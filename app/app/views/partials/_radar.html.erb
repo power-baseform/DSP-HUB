@@ -1,0 +1,165 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%
+  params[:showOverall] = false if params[:showOverall].nil?
+  params[:labelAxis] = false if params[:labelAxis].nil?
+  params[:showLegend] = false if params[:showLegend].nil?
+
+  gamification = GamificationReader.new current_system
+
+  if params[:challenge]
+    gamification.calculate_gamification_total_for_challenge params[:challenge]
+  else
+    gamification.calculate_gamification_total params[:participant]
+  end
+
+  return if gamification.total == 0
+%>
+<div class="radarHolder">
+  <canvas class="gamification_chart_canvas radar"></canvas>
+</div>
+<script type="text/javascript">
+    var ctx = $(".gamification_chart_canvas").get(0).getContext('2d');
+
+    var dims = {};
+    <% gamification.dimensions.each do |dim| %>
+      dims["<%= dim %>"] = '<%=t(dim)%>';
+    <% end %>
+
+    var color = {};
+    color["<%= GamificationBase::PERSONAL%>"] = '153, 204, 255';
+    color["<%= GamificationBase::SOCIAL%>"] = '153, 204, 153';
+    color["<%= GamificationBase::POLITICAL%>"] = '255, 153, 153';
+
+    var showLabels = window.innerWidth > 400;
+    var labels = [];
+
+    <% gamification.dimensions.each do |dim| %>
+      <% gamification.categories.each do |cat| %>
+        labels.push('<%= t(cat) %>');
+      <% end %>
+      labels.push('');
+    <% end %>
+
+    var datasets = [];
+    var data = {};
+
+    <% gamification.dimensions.each_with_index do |dim, index| %>
+      data["<%= dim %>"] = [];
+      <% (index * 4).times do %>
+        data["<%= dim %>"].push(0.0);
+      <% end %>
+
+      <% gamification.categories.each do |cat| %>
+        data["<%= dim %>"].push(<%= gamification.total_for_category(dim, cat) / gamification.user_count %>);
+      <% end %>
+
+      <% (8 - index * 4).times do %>
+        data["<%= dim %>"].push(0.0);
+      <% end %>
+
+      datasets.push({
+        label: dims["<%= dim %>"],
+        data: data["<%= dim %>"],
+        backgroundColor: 'rgba(' + color["<%= dim %>"] + ', 0.5)',
+        borderColor: 'rgba('+ color["<%= dim %>"] +', 1)',
+        borderWidth: 1
+      });
+    <% end %>
+
+    var chartConfiguration = {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive:true,
+            animationDuration:700,
+            layout:{
+                padding: {
+                    top: 0,
+                    bottom: 0,
+                    right: 8,
+                    left: 8
+                }
+            },
+            scale: {
+                gridLines:{
+                    display: true,
+                    circular:true,
+                    <% if params[:lineColor].present? %>
+                      color: "<%= params[:lineColor] %>"
+                    <% end %>
+                },
+                beginAtZero: true,
+                angleLines:{
+                    display: true,
+                    <% if params[:lineColor].present? %>
+                      color: "<%= params[:lineColor] %>"
+                    <% end %>
+                },
+                pointLabels:{
+                    display: showLabels,
+                    fontFamily: 'Montserrat, Arial, Helvetica, \"sans-serif\"',
+                    <% if params[:lineColor].present? %>
+                      fontColor: "<%= params[:lineColor] %>"
+                    <% end %>
+                },
+                ticks: {
+                  <% if params[:lineColor].present? %>
+                    backdropColor: "<%= params[:lineColor] %>",
+                  <% end %>
+                  display:<%=params[:labelAxis]%>,
+                  callback: function(value, index, values) {
+                      return <%=params[:labelAxis]%>&&index%2==0?value:'';
+                  }
+                }
+            },
+            legend: {
+                display: <%=params[:showLegend]%>,
+                position: 'bottom',
+                fullWidth: true,
+                labels: {
+                    fontFamily: 'Montserrat, Arial, Helvetica, \"sans-serif\"',
+                    <% if params[:lineColor].present? %>
+                      fontColor: "<%= params[:lineColor] %>"
+                    <% end %>
+                }
+            },
+            tooltips:{
+                bodyFontFamily: 'Montserrat, Arial, Helvetica, \"sans-serif\"',
+                titleFontFamily: 'Montserrat, Arial, Helvetica, \"sans-serif\"',
+                footerFontFamily: 'Montserrat, Arial, Helvetica, \"sans-serif\"',
+                <% if params[:lineColor].present? %>
+                  fontColor: "<%= params[:lineColor] %>",
+                <% end %>
+                callbacks: {
+                    labelColor: function(tooltipItem, chart) {
+                        return {
+                            backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].backgroundColor,
+                            borderColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor
+                        }
+                    }
+                }
+            }
+        }
+    };
+    var myChart = new Chart(ctx,chartConfiguration);
+</script>

@@ -1,0 +1,39 @@
+/*## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
+
+
+
+.demo-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 350px; display: block; margin-bottom: 10px;
+}
+
+.demo-placeholder {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+.legend table {
+    border-spacing: 5px;
+}
+.pieLabel {
+    border: 1px solid #CAC9C9;
+    border-radius: 4px; 
+    padding: 1px 1px;
+}

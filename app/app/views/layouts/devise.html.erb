@@ -1,0 +1,64 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POWER Hub</title>
+  <%= javascript_include_tag 'application'%>
+
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+
+  <style>
+    /*Devise flash*/
+    .alert-error {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: center;
+    }
+    .alert-alert {
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      color: #b94a48;
+      text-align: center;
+    }
+    .alert-notice {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #468847;
+      text-align: left;
+    }
+  </style>
+  <%= csrf_meta_tags %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body style="background:#002030;">
+
+<div class="container body">
+
+  <% flash.each do |key, value| %>
+      <div align="center" id="flash" class="alert alert-<%= key %>"><%= raw value %></div>
+  <% end %>
+
+  <%= yield %>
+
+</body>

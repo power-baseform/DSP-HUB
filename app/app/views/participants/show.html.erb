@@ -1,0 +1,190 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+    <div class="form-group">
+      <%= render 'partials/system_picker' %>
+    </div>
+  </div>
+  <div class="title_right">
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Showing Participant:</b> <%= @participant.nome %></h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Back', participants_path, class: "btn btn-dark" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <%= image_tag user_avatar_url(@participant.pkid), class: 'avatar' %>
+                </td>
+              </tr>
+              <tr>
+                <th>Active</th>
+                <td class="pub_<%= @participant.activo %>"><%= @participant.activo ? "✔" : "✖" %></td>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <td><%= @participant.nome%></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><%= @participant.email%></td>
+              </tr>
+              <tr>
+                <th>Registry date</th>
+                <td><%= @participant.data_registo %></td>
+              </tr>
+              <tr>
+                <td colspan="2"><%= link_to "#{@participant.activo ? "Disable" : "Enable"} user", participant_path(@participant), method: :delete, class: "btn btn-#{@participant.activo ? "danger" : "success"}" %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Gamification</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Reset', reset_gamification_participant_path(@participant), class: "btn btn-warning", data: { confirm: "Are you sure you want to reset the gamification for this participant?"} %>
+            <%= link_to 'Back', participants_path, class: "btn btn-dark" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <%
+                reader = GamificationReader.new current_system
+                reader.calculate_gamification_total @participant
+              %>
+              <%= reader.total %> Points. <%= image_tag "badges/#{reader.metal}_badge.svg", class: 'small-badge' %> <%= reader.get_phrase(current_locale) %></br>
+              <table class="table table-striped jambo_table" style="width: 400px;">
+                <thead>
+                  <tr>
+                    <th colspan="2">Statistic</th>
+                    <th>Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% reader.dimensions.each do |dim| %>
+                    <tr>
+                      <th colspan="2"><%= t(dim) %></th>
+                      <td><%= reader.total_for_dimension(dim) %></td>
+                    </tr>
+                    <% reader.categories.each do |cat| %>
+                      <tr>
+                        <td></td>
+                        <td><%= t(cat) %></td>
+                        <td><%= reader.total_for_category(dim, cat) %></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-sm-6">
+              <%= render "partials/radar", params: {showLegend: true, participant: @participant} %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Issues followed</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Back', participants_path, class: "btn btn-dark" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped jambo_table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @participant.participant_challenges.following.each_with_index do |c, idx|
+                next if c.challenge.sistema.to_i != current_system.id %>
+                <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer openTr"  data-link="<%= challenge_path(c.challenge) %>">
+                  <td><%= c.challenge.codigo %></td>
+                  <td><%= c.challenge.titulo %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Logs</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Back', participants_path, class: "btn btn-dark" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped jambo_table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Target</th>
+                <th>Issue</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @logs.each.with_index do |log, idx| %>
+                <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer">
+                  <td><%= t(log.action) %></td>
+                  <td><%= log.action_target == "-1" ? "--" : log.action_target %></td>
+                  <td><%= log.issue_code %></td>
+                  <td><%= log.timestamp %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= paginate @logs %>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".openTr").on("click", function(e) {
+    location.href = this.dataset.link;
+  });
+</script>

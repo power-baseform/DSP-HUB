@@ -1,0 +1,90 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+    <div class="form-group">
+      <%= render 'partials/system_picker' %>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Website settings for <%= current_system.name %> DSP:</h2>
+          <div class="nav navbar-right panel_toolbox"></div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <%
+             @properties = PropertiesEditor.new(@props.properties, @currentLocale)
+          %>
+          <%= form_for @properties.form, :url => save_properties_no_locale_path, method: :patch do |f| %>
+
+            <% @properties.non_localized_properties.each do |prop| %>
+              <div class="form-group">
+                <label class="control-label"><%= prop %>:</label>
+                <%= f.text_field prop, class:"form-control"%>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <label class="control-label">Show registration form:</label>
+              <%= f.check_box :show_registration_form, {class: "checkbox", checked: @properties.show_registration_form}, "true", "false" %>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= f.submit "Save", class: "btn btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Homepage image background:</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Change', "#", class: "btn btn-success triggerInput" %>
+            <%= form_tag save_properties_no_locale_path, method: :patch, multipart: true do %>
+              <%= file_field_tag :image , {style: 'display: none;'}%>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <%= image_tag home_image_url(@properties.slider_image), class: 'home_image' %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".triggerInput").on("click", function(e) {
+    $(this).parent().find("input[type='file']").trigger("click");
+  });
+
+  $("input[type='file']").on("change", function(e) {
+    $(this).closest("form").submit();
+  })
+</script>

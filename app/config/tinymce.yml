@@ -1,0 +1,10 @@
+default:
+  plugins:
+    - lists
+    - link
+    - image
+    - table
+    - code
+  toolbar: bold italic | bullist numlist | align outdent indent | link | image | table
+  font_formats: "Montserrat=montserrat"
+  extended_valid_elements: "*[*]"

@@ -1,0 +1,67 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+    <%= render 'partials/locale' %>
+    <div class="form-group">
+      <%= render 'partials/system_picker' %>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Editing About section for <%= current_system.name %> DSP:</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to "NEW", new_about_section_path, class: "btn btn-success small" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped jambo_table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Code</th>
+                <th>Published</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @sections.each.with_index do |section, idx| %>
+                <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer openTr" data-link="<%= edit_about_section_path(section) %>">
+                  <td><%= section.title %></td>
+                  <td><%= section.code %></td>
+                  <td class="pub_<%= section.online %>"><%= section.online ? "✔" : "✖" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+          <script>
+            $(".openTr").on("click", function(e) {
+              location.href = this.dataset.link;
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

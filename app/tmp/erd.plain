@@ -1,0 +1,502 @@
+graph 1 39.372 15.056
+node m_AboutSection 9.886 9.4583 2 1.5 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">AboutSection</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="body">body <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="code">code <font face="Arial ItalicMT" color="grey60">string (20) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="locale">locale <font face="Arial ItalicMT" color="grey60">string (10) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="online">online <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="sistema">sistema <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial ItalicMT" color="grey60">string (20) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node "m_ActiveRecord::SchemaMigration" 30.136 13.174 2.3194 0.59722 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ActiveRecord::SchemaMigration</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="version">version <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Answer 22.539 2.75 2.125 1.5 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Answer</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="codigo">codigo <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="data_abertura">data_abertura <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="data_submissao">data_submissao <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="data_ultima_alteracao">data_ultima_alteracao <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="fk_formulario">fk_formulario <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Challenge 19.164 9.4583 2.0278 3.6667 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Challenge</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="codigo">codigo <font face="Arial ItalicMT" color="grey60">string (70) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_fim">data_fim <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_inicio">data_inicio <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="descricao">descricao <font face="Arial ItalicMT" color="grey60">string (500) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fk_city">fk_city <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="fkscope">fkscope <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="fktecnico">fktecnico <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="fkthumbnail">fkthumbnail <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="gamification">gamification <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="hashtags">hashtags <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="locale">locale <font face="Arial ItalicMT" color="grey60">string (10) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="mapontop">mapontop <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="publicado">publicado <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="shape_mobile_url">shape_mobile_url <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="shape_url">shape_url <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="sistema">sistema <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="titulo">titulo <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="type">type <font face="Arial ItalicMT" color="grey60">string (9) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ChallengeTag 30.178 5.8333 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ChallengeTag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="processo_fk">processo_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="tag_fk">tag_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_City 19.164 13.174 2 1.8611 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">City</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="country">country <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkdeployment">fkdeployment <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="image_mime">image_mime <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="image_name">image_name <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="lat">lat <font face="Arial ItalicMT" color="grey60">float ∗</font></td></tr>
+  <tr><td align="left" width="130" port="lon">lon <font face="Arial ItalicMT" color="grey60">float ∗</font></td></tr>
+  <tr><td align="left" width="130" port="metadata">metadata <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Comment 10.705 5.8333 2 2.4028 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Comment</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="comentario">comentario <font face="Arial ItalicMT" color="grey60">string (1500)</font></td></tr>
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="dislikes">dislikes <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkresponseto">fkresponseto <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="likes">likes <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="publico">publico <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="status">status <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="tipo">tipo <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial ItalicMT" color="grey60">string (200)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_CommunityChallenge 27.775 5.8333 2 1.6806 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">CommunityChallenge</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="body">body <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="city_fk">city_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="participante_fk">participante_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="processo_fk">processo_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="scope_fk">scope_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="temp_thumb_fk">temp_thumb_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_CommunityChallengeImage 30.053 2.75 2.1528 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">CommunityChallengeImage</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="community_processo_fk">community_processo_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="temporary_thumbnail_fk">temporary_thumbnail_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_CommunityChallengeTag 32.608 2.75 2.1528 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">CommunityChallengeTag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="community_processo_id">community_processo_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="tag_id">tag_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_CommunityDocument 27.497 2.75 2.1528 2.4028 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">CommunityDocument</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="community_processo_fk">community_processo_fk <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_documento">data_documento <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="designacao">designacao <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="file_type">file_type <font face="Arial ItalicMT" color="grey60">string (20)</font></td></tr>
+  <tr><td align="left" width="130" port="imagem">imagem <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="link">link <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="mime">mime <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="nomeficheiro">nomeficheiro <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="size">size <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="tipo">tipo <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Document 22.969 5.8333 2 2.5833 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Document</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_documento">data_documento <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="designacao">designacao <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="file_type">file_type <font face="Arial ItalicMT" color="grey60">string (20)</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="fksite_tab">fksite_tab <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="imagem">imagem <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="link">link <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="mime">mime <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="nomeficheiro">nomeficheiro <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="size">size <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="tipo">tipo <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Event 15.761 5.8333 2 1.5 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Event</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_registo">data_registo <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="designacao">designacao <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="link">link <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="local">local <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Item 25.011 2.75 2 2.5833 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Item</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="codigo">codigo <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="editable">editable <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="end_inline">end_inline <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fk_formulario">fk_formulario <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fk_tipo">fk_tipo <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="info">info <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="inline">inline <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="is_obrigatorio">is_obrigatorio <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="nome">nome <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="opcoes">opcoes <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="style_class">style_class <font face="Arial ItalicMT" color="grey60">string (200)</font></td></tr>
+  <tr><td align="left" width="130" port="style_class_label">style_class_label <font face="Arial ItalicMT" color="grey60">string (200)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ItemAnswer 25.011 0.47917 2 0.95833 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ItemAnswer</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="fk_item">fk_item <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fk_resposta">fk_resposta <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="valor">valor <font face="Arial ItalicMT" color="grey60">text ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ItemType 20.567 5.8333 2 0.59722 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ItemType</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="nome">nome <font face="Arial ItalicMT" color="grey60">string (100)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Log 4.261 5.8333 2 1.6806 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Log</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="action">action <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="action_target">action_target <font face="Arial ItalicMT" color="grey60">string (100)</font></td></tr>
+  <tr><td align="left" width="130" port="issue_code">issue_code <font face="Arial ItalicMT" color="grey60">string (70) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="issue_locale">issue_locale <font face="Arial ItalicMT" color="grey60">string (10) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="system_id">system_id <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="timestamp">timestamp <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="username">username <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Participant 7.4832 9.4583 2 3.3056 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Participant</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="activo">activo <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="age_bracket">age_bracket <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="check_key">check_key <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="data_registo">data_registo <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="education_level">education_level <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string (100) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="gamification">gamification <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="gender">gender <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="md5pwd">md5pwd <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="metadata">metadata <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="nome">nome <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="number_children">number_children <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="profession">profession <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="provider">provider <font face="Arial ItalicMT" color="grey60">string (9)</font></td></tr>
+  <tr><td align="left" width="130" port="token">token <font face="Arial ItalicMT" color="grey60">string (3000)</font></td></tr>
+  <tr><td align="left" width="130" port="uid">uid <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ParticipantChallenge 13.358 5.8333 2 1.1389 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ParticipantChallenge</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="is_following">is_following <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ParticipantEvent 10.817 2.75 2 0.95833 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ParticipantEvent</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="fkevento">fkevento <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ParticipantSection 18.164 2.75 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ParticipantSection</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="fk_participante">fk_participante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fk_seccao">fk_seccao <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ParticipantSystem 1.8582 5.8333 2 0.95833 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ParticipantSystem</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data_login">data_login <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fksistema">fksistema <font face="Arial ItalicMT" color="grey60">string (10) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Role 33.289 13.174 2 0.59722 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Role</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="code">code <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Scope 27.275 13.174 2 1.1389 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Scope</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="code">code <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="localization">localization <font face="Arial ItalicMT" color="grey60">text ∗</font></td></tr>
+  <tr><td align="left" width="130" port="system">system <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_ScopeTag 34.219 5.8333 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">ScopeTag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="scope_id">scope_id <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="tag_id">tag_id <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Section 18.164 5.8333 2 1.1389 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Section</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="corpo">corpo <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="indice">indice <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="titulo">titulo <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_SiteProp 4.261 9.4583 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">SiteProp</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="properties">properties <font face="Arial ItalicMT" color="grey60">text ∗</font></td></tr>
+  <tr><td align="left" width="130" port="sistema">sistema <font face="Arial ItalicMT" color="grey60">string (50) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Survey 25.372 5.8333 2 2.2222 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Survey</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data_abertura">data_abertura <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="data_fim">data_fim <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="fk_base_dados">fk_base_dados <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="fkprocesso">fkprocesso <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="info_introdutoria">info_introdutoria <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="item_mostrar_lista">item_mostrar_lista <font face="Arial ItalicMT" color="grey60">string (50)</font></td></tr>
+  <tr><td align="left" width="130" port="nome">nome <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="observacoes">observacoes <font face="Arial ItalicMT" color="grey60">string (500)</font></td></tr>
+  <tr><td align="left" width="130" port="repetivel">repetivel <font face="Arial ItalicMT" color="grey60">boolean ∗</font></td></tr>
+  <tr><td align="left" width="130" port="script">script <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_SurveyType 25.372 9.4583 2 1.3194 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">SurveyType</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="data_abertura">data_abertura <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="data_fim">data_fim <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="designacao">designacao <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="observacoes">observacoes <font face="Arial ItalicMT" color="grey60">string (2000)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_System 9.886 13.174 2 0.59722 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">System</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Tag 32.608 9.4583 2 0.59722 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Tag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="tag">tag <font face="Arial ItalicMT" color="grey60">string (200) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_TemporaryThumbnail 29.553 9.4583 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">TemporaryThumbnail</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="mime">mime <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_Thumbnail 38.372 13.174 2 0.77778 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Thumbnail</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="mime">mime <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+  <tr><td align="left" width="130" port="nome">nome <font face="Arial ItalicMT" color="grey60">string (255) ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_User 35.83 13.174 2.2778 2.7639 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="current_sign_in_at">current_sign_in_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_ip">current_sign_in_ip <font face="Arial ItalicMT" color="grey60">inet</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="last_action">last_action <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial ItalicMT" color="grey60">inet</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="online">online <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_UserAvatar 7.4832 5.8333 2 1.1389 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">UserAvatar</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="fkparticipante">fkparticipante <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="mime">mime <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="nomeficheiro">nomeficheiro <font face="Arial ItalicMT" color="grey60">string (255)</font></td></tr>
+  <tr><td align="left" width="130" port="size">size <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+node m_UserRole 35.83 9.4583 2 0.51389 <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">UserRole</font></td></tr>
+</table>
+}> solid Mrecord black lightgrey
+edge m_Answer m_ItemAnswer 7 23.24 2.0043 23.419 1.8216 23.615 1.6294 23.803 1.4583 23.958 1.3168 24.131 1.1708 24.296 1.0362 solid black
+ solid black
+edge m_Challenge m_ChallengeTag 10 20.18 9.0009 21.175 8.5737 22.743 7.954 24.164 7.625 26.256 7.1406 27.046 8.0806 28.969 7.125 29.332 6.9449 29.641 6.6078 29.856 6.3232 solid black
+edge m_Challenge m_Comment 7 18.146 9.257 16.73 8.9474 14.121 8.2675 12.15 7.125 12.034 7.0578 11.919 6.9803 11.808 6.8973 solid black
+edge m_Challenge m_CommunityChallenge 10 20.179 9.0364 21.179 8.6325 22.757 8.027 24.164 7.625 25.213 7.3253 25.616 7.6593 26.567 7.125 26.739 7.0278 26.902 6.8975 27.049 6.7568 solid black
+edge m_Challenge m_Document 7 20.181 8.5807 20.668 8.1514 21.255 7.6214 21.761 7.125 21.799 7.0875 21.838 7.0492 21.877 7.0102 solid black
+edge m_Challenge m_Event 7 18.15 8.3921 17.774 7.9953 17.344 7.5404 16.955 7.125 16.819 6.9791 16.674 6.8234 16.534 6.6724 solid black
+edge m_Challenge m_Participant 7 18.147 9.8237 15.889 10.61 10.524 12.329 8.8791 11.542 8.7035 11.458 8.5467 11.339 8.4074 11.202 dotted black
+edge m_Challenge m_ParticipantChallenge 7 18.147 9.0678 17.171 8.6654 15.682 7.9776 14.553 7.125 14.314 6.9447 14.083 6.7132 13.889 6.4961 solid black
+edge m_Challenge m_Section 4 18.659 7.6299 18.55 7.2338 18.441 6.8387 18.353 6.5203 solid black
+edge m_Challenge m_Survey 10 20.18 8.818 20.82 8.4348 21.672 7.959 22.469 7.625 23.194 7.3216 23.496 7.5373 24.164 7.125 24.218 7.0916 24.271 7.0551 24.323 7.0163 solid black
+edge m_Challenge m_Tag 10 20.178 10.261 20.845 10.736 21.759 11.291 22.671 11.542 23.514 11.773 29.738 11.879 30.546 11.542 31.362 11.201 32.021 10.362 32.36 9.859 dotted black
+edge m_City m_Challenge 4 19.164 12.246 19.164 11.991 19.164 11.705 19.164 11.416 solid black
+edge m_City m_CommunityChallenge 11 20.166 13.034 21.96 12.767 25.618 12.133 26.567 11.292 27.22 10.712 26.869 10.232 27.275 9.4583 27.275 9.4583 27.708 8.6327 27.809 7.5623 27.816 6.7992 solid black
+edge m_Comment m_Comment 7 11.708 6.3987 11.939 6.35 12.108 6.1615 12.108 5.8333 12.108 5.5667 11.996 5.3923 11.831 5.3101 solid black
+edge m_CommunityChallenge m_CommunityChallengeImage 4 28.391 4.9989 28.808 4.4352 29.343 3.7104 29.692 3.2382 solid black
+edge m_CommunityChallenge m_CommunityChallengeTag 10 28.404 4.999 28.57 4.8252 28.762 4.6593 28.969 4.5417 29.902 4.0119 30.389 4.5557 31.33 4.0417 31.693 3.8438 32.019 3.5105 32.251 3.232 solid black
+edge m_CommunityChallenge m_CommunityDocument 4 27.7 4.9989 27.674 4.7152 27.645 4.3907 27.617 4.0781 solid black
+edge m_CommunityChallenge m_Tag 10 28.422 6.6713 28.586 6.8407 28.771 7.0038 28.969 7.125 29.669 7.5535 30.037 7.2129 30.747 7.625 31.391 7.9987 31.974 8.6466 32.31 9.0636 dotted black
+ dotted black
+edge m_Event m_Participant 10 15.234 6.579 15.044 6.7914 14.812 6.999 14.553 7.125 12.195 8.2691 10.927 6.2796 8.6777 7.625 8.6245 7.6568 8.5732 7.6921 8.5238 7.7302 dotted black
+edge m_Event m_ParticipantEvent 7 15.152 5.0877 14.972 4.8949 14.766 4.6979 14.553 4.5417 13.746 3.9497 12.713 3.4721 11.937 3.1593 solid black
+edge m_Item m_ItemAnswer 4 25.011 1.462 25.011 1.3297 25.011 1.2001 25.011 1.0808 solid black
+edge m_ItemType m_Item 10 20.759 5.5403 20.97 5.2433 21.335 4.7928 21.761 4.5417 22.566 4.0675 22.996 4.5135 23.803 4.0417 23.836 4.0224 23.868 4.002 23.9 3.9805 solid black
+edge m_Participant m_Answer 10 9.0944 5.8333 9.5504 5.4414 9.0219 4.9102 9.4971 4.5417 10.364 3.8694 18.287 4.2792 19.358 4.0417 20.044 3.8896 20.773 3.6036 21.359 3.3394 solid black
+edge m_Participant m_Comment 10 8.484 7.8404 8.5468 7.7654 8.6115 7.6931 8.6777 7.625 8.9498 7.3451 9.0995 7.3743 9.3999 7.125 9.4691 7.0676 9.5388 7.0072 9.6082 6.9451 solid black
+edge m_Participant m_CommunityChallenge 10 8.4171 7.8097 8.4981 7.7395 8.5849 7.677 8.6777 7.625 10.412 6.6532 24.754 7.9418 26.567 7.125 26.758 7.0385 26.934 6.9058 27.089 6.7577 solid black
+edge m_Participant m_Log 4 6.4814 8.3312 6.0345 7.8285 5.5143 7.2433 5.0898 6.7658 solid black
+edge m_Participant m_ParticipantChallenge 10 8.4374 7.8105 8.5128 7.7418 8.5928 7.6792 8.6777 7.625 9.9918 6.786 10.768 7.8462 12.15 7.125 12.433 6.9771 12.686 6.7358 12.886 6.5016 solid black
+edge m_Participant m_ParticipantEvent 7 6.4812 7.859 5.9798 6.8363 5.6073 5.5227 6.2749 4.5417 6.6725 3.9573 8.4796 3.374 9.6909 3.0383 solid black
+edge m_Participant m_ParticipantSection 17 9.0944 5.8333 9.5504 5.4414 9.05 4.9438 9.4971 4.5417 10.344 3.7799 10.895 4.2698 12.011 4.0417 13.769 3.6824 15.805 3.252 17.039 2.99 8.3681 7.8104 8.4782 7.5828 8.5845 7.3499 8.6777 7.125 8.9085 6.5677 8.6369 6.2265 9.0944 5.8333 solid black
+edge m_Participant m_ParticipantSystem 10 6.4801 8.3608 6.1757 8.0837 5.8236 7.812 5.4555 7.625 4.483 7.1309 4.0021 7.6621 3.0527 7.125 2.7429 6.9497 2.4676 6.6664 2.2597 6.4097 solid black
+edge m_Participant m_UserAvatar 4 7.4832 7.8102 7.4832 7.3034 7.4832 6.7792 7.4832 6.3981 solid black
+edge m_Role m_UserRole 4 33.492 12.876 33.955 12.199 35.084 10.549 35.585 9.8176 solid black
+edge m_Scope m_Challenge 4 26.272 12.714 24.757 12.02 21.891 10.708 20.3 9.9789 solid black
+edge m_Scope m_CommunityChallenge 4 27.12 12.606 26.945 11.843 26.748 10.464 27.275 9.4583 solid black
+edge m_Scope m_ScopeTag 10 27.728 12.608 27.998 12.312 28.368 11.974 28.775 11.792 29.802 11.331 33.031 12.098 33.817 11.292 34.491 10.6 34.348 7.5634 34.261 6.3434 solid black
+edge m_Scope m_Tag 10 27.759 12.61 28.031 12.326 28.392 11.999 28.775 11.792 29.57 11.361 29.959 11.736 30.747 11.292 31.396 10.926 31.977 10.276 32.312 9.8563 dotted black
+edge m_Section m_ParticipantSection 4 18.164 5.2678 18.164 4.6948 18.164 3.8162 18.164 3.2629 solid black
+edge m_Survey m_Answer 4 24.369 4.7419 24.021 4.3634 23.637 3.9453 23.311 3.5902 solid black
+edge m_Survey m_Item 4 25.243 4.7289 25.221 4.5446 25.199 4.3513 25.176 4.1606 solid black
+edge m_SurveyType m_Survey 4 25.372 8.8019 25.372 8.3191 25.372 7.6484 25.372 7.0667 solid black
+edge m_System m_AboutSection 4 9.886 12.876 9.886 12.33 9.886 11.15 9.886 10.33 solid black
+edge m_System m_Answer 10 2.261 9.4583 0.74549 7.7289 -0.95423 6.1892 0.64991 4.5417 1.3752 3.7967 18.341 4.2546 19.358 4.0417 20.046 3.8978 20.775 3.6125 21.361 3.3466 dotted black
+edge m_System m_Challenge 4 10.618 12.881 12.23 12.235 16.099 10.686 18.029 9.9128 solid black
+edge m_System m_Comment 13 8.8835 12.956 8.0239 12.711 6.8377 12.22 6.2749 11.292 5.4298 9.8983 5.2175 8.865 6.2749 7.625 7.1875 6.5547 8.1455 7.7612 9.3999 7.125 9.4673 7.0908 9.5334 7.0519 9.5979 7.0094 dotted black
+edge m_System m_Participant 4 9.6934 12.876 9.4435 12.489 8.9878 11.785 8.5549 11.115 dotted black
+edge m_System m_ParticipantSystem 11 2.261 9.4583 1.5277 8.6215 1.6113 7.2256 1.7359 6.4324 8.8805 13.006 7.2016 12.71 3.9254 12.051 3.0527 11.292 2.3831 10.709 2.846 10.126 2.261 9.4583 solid black
+edge m_System m_SiteProp 7 8.8818 12.906 7.9493 12.62 6.5592 12.097 5.5666 11.292 5.1116 10.923 4.7418 10.357 4.5134 9.9519 solid black
+edge m_System m_Survey 7 10.887 13.003 13.468 12.561 20.163 11.407 20.372 11.292 21.34 10.758 23.266 8.4766 24.424 7.0373 dotted black
+edge m_Tag m_ChallengeTag 4 32.409 9.1617 31.992 8.5396 31.022 7.093 30.509 6.328 solid black
+edge m_Tag m_CommunityChallengeTag 4 32.608 9.1658 32.608 8.1247 32.608 4.5915 32.608 3.2618 solid black
+edge m_Tag m_ScopeTag 4 32.74 9.1617 33.015 8.5421 33.654 7.1048 33.995 6.3374 solid black
+edge m_TemporaryThumbnail m_CommunityChallenge 4 29.307 8.9578 29.018 8.3671 28.531 7.376 28.184 6.6684 solid black
+edge m_TemporaryThumbnail m_CommunityChallengeImage 10 29.987 9.0757 30.433 8.6507 31.099 7.9193 31.372 7.125 31.745 6.0392 31.73 5.6325 31.372 4.5417 31.208 4.0406 30.843 3.5644 30.539 3.2291 solid black
+ dotted black
+edge m_User m_UserRole 4 35.83 11.795 35.83 11.096 35.83 10.3 35.83 9.8404 solid black
+stop

@@ -1,0 +1,110 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+
+<div class="main_container">
+
+  <div class="col-md-3 left_col menu_fixed">
+    <div class="left_col scroll-view">
+
+      <div class="navbar nav_title" style="border: 0;">
+        <a href="" class="site_title"><i class="fa fa-tint" style="border:none; font-size: 34px;vertical-align: middle;"></i> <span>POWER Hub</span></a>
+      </div>
+      <div class="clearfix"></div>
+
+
+      <!-- menu profile quick info -->
+      <div class="profile" style="display: inline-block; margin: 10px 0 20px;">
+        <div class="profile_pic">
+          <span class="initials"><%= current_user.initials %></span>
+        </div>
+        <div class="profile_info" style="padding: 0 10px 10px;">
+          <span>Welcome,</span>
+          <h2 class="truncatedName"><%= current_user.display_name %></h2>
+        </div>
+      </div>
+      <!-- /menu profile quick info -->
+
+      <br />
+
+      <!-- sidebar menu -->
+      <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+        <div class="menu_section">
+          <h3 style="padding-left: 15px;">General</h3>
+          <ul class="nav side-menu">
+            <li>
+              <%= link_to challenges_path do %>
+                <i class="fa fa-bookmark"></i> Challenges
+              <% end %>
+            </li>
+            <li>
+              <%= link_to participants_path do %>
+                <i class="fa fa-users"></i> Participants
+              <% end %>
+            </li>
+            <li><a><i class="fa fa-comments"></i> Participations <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                <li><%= link_to 'Summary', summary_path %></li>
+                <li><%= link_to 'Comments', comments_path %></li>
+              </ul>
+            </li>
+            <li>
+              <%= link_to scopes_path do %>
+                <i class="fa fa-star"></i> Themes
+              <% end %>
+            </li>
+            <li>
+              <%= link_to tags_path do %>
+                <i class="fa fa-tags"></i> Tags
+              <% end %>
+            </li>
+            <li>
+              <%= link_to community_challenges_path do %>
+                <i class="fa fa-paper-plane"></i> Community Challenges
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <% if current_user.admin? %>
+          <div class="menu_section">
+            <h3 style="padding-left: 15px;">Administration</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-cogs"></i> DSP Properties <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none">
+                  <li><%= link_to 'Text properties', properties_path %></li>
+                  <li><%= link_to 'About section', about_section_index_path %></li>
+                  <li><%= link_to 'Gamification & Cover Image', settings_path %></li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to cities_path do %>
+                  <i class="fa fa-building"></i> Cities
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path do %>
+                  <i class="fa fa-user-circle"></i> Users
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <!-- /sidebar menu -->
+    </div>
+  </div>

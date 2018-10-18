@@ -1,0 +1,170 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%= tinymce_assets %>
+
+<% if @challenge.persisted? %>
+  <div class="x_title">
+    <h2><b>Editing Challenge:</b> <%= @challenge.codigo %> - <%= @challenge.titulo %></h2>
+    <div class="nav navbar-right panel_toolbox">
+      <%= link_to 'Back', challenges_path, class: "btn btn-dark" %>
+      <%= link_to 'Delete', challenge_path(@challenge), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"  if @challenge.persisted? %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% end %>
+<div class="x_content">
+  <%= form_for @challenge do |f| %>
+    <div class="form-group">
+      <label class="control-label" for="name">Name:</label>
+      <%= f.text_field :titulo, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:titulo].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Code:</label>
+      <%= f.text_field :codigo, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:codigo].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Description:</label>
+      <%= f.text_area :descricao, class: "form-control", rows: 5 %>
+      <p class="error"><%= @challenge.errors.messages[:descricao].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Theme:</label>
+      <%= f.collection_select :fkscope, Scope.all, :id, :translated_code,{}, {class: "form-control"} %>
+      <p class="error"><%= @challenge.errors.messages[:fkscope].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Date:</label>
+      <%= f.date_field :data_inicio, class:"form-control"%>
+      <p class="error"><%= @challenge.errors.messages[:data_inicio].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">End date:</label>
+      <%= f.date_field :data_fim, class:"form-control"%>
+      <p class="error"><%= @challenge.errors.messages[:data_fim].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Published:</label>
+      <%= f.check_box :publicado, class: "checkbox"%>
+      <p class="error"><%= @challenge.errors.messages[:publicado].try(:first) %></p>
+    </div>
+
+    <div class="form-group system" data-bp="<%= System.find_by(name: "Best Practices").id %>">
+      <label class="control-label" for="name">System:</label>
+      <%= f.collection_select :sistema, System.all, :id, :name,{}, {class: "form-control"} %>
+      <p class="error"><%= @challenge.errors.messages[:sistema].try(:first) %></p>
+    </div>
+
+    <div class="form-group bp">
+      <label class="control-label" for="name">City:</label>
+      <%= f.collection_select :fk_city, City.all, :id, :name,{}, {class: "form-control"} %>
+      <p class="error"><%= @challenge.errors.messages[:fk_city].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Language:</label>
+      <%= f.select :locale, options_for_select(I18n.available_locales, @challenge.locale), {}, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:locale].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Hashtags:</label>
+      <%= f.text_field :hashtags, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:hashtags].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Map URL:</label>
+      <%= f.text_field :shape_url, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:shape_url].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Mobile Map URL:</label>
+      <%= f.text_field :shape_mobile_url, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:shape_mobile_url].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Show map on top:</label>
+      <%= f.check_box :mapontop, class: "checkbox"%>
+      <p class="error"><%= @challenge.errors.messages[:mapontop].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Type:</label>
+      <%= f.select :type, options_for_select([ "featured", "community" ], @challenge.type || "featured"), {}, class: "form-control" %>
+      <p class="error"><%= @challenge.errors.messages[:type].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Cover photo:</label>
+      <%= f.file_field :image, class: "form-control" %>
+      <%= image_tag challenge_image_url(@challenge.pkid, size: :small), class: '' if @challenge.persisted? %>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Tags:</label>
+      <%= f.collection_select :tag_ids, Tag.all, :id, :tag,{}, {class: "form-control tagPicker", multiple: true} %>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Comments Title:</label>
+      <%= f.text_field :comments_title, class: "form-control" %>
+      Defaults to the available translation
+      <p class="error"><%= @challenge.errors.messages[:comments_title].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name">Comments Description:</label>
+      <%= f.text_area :comments_description, class: "form-control", rows: 5 %>
+      <p class="error"><%= @challenge.errors.messages[:comments_description].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="name" style="float:none;">Gamification chart overwrite: (default is the gamification chart)</label>
+      <%= f.text_area :gamification_chart_iframe, class: "form-control tinymce", rows: 10 %>
+      <p class="error"><%= @challenge.errors.messages[:gamification_chart_iframe].try(:first) %></p>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.submit "Save", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $( ".tagPicker" ).select2({});
+  $(".bp").hide();
+  $(".system select").on("change", function() {
+    if ($(this).val() == $(".system").data("bp")) {
+      $(".bp").show();
+    } else {
+      $(".bp").hide();
+    }
+  }).trigger("change");
+</script>

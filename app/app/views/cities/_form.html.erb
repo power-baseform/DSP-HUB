@@ -1,0 +1,129 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%= render 'partials/ol' %>
+
+<%= form_for @city do |f| %>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Name:</label>
+    <%= f.text_field :name, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Country:</label>
+    <%= f.text_field :country, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Latitude:</label>
+    <%= f.text_field :lat, class:"form-control lat-field"%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Longitude:</label>
+    <%= f.text_field :lon, class:"form-control lon-field"%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">PUB url:</label>
+    <%
+       metadata = @city.metadata.present? ? JSON.parse(@city.metadata) : nil
+       en = metadata.present? ? metadata["en"] : nil
+       pub_url = en.present? ? en["pub_url"] : nil
+    %>
+    <%= f.text_field :pub_url, value: pub_url, class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <div id="map" style="width: 800px; height: 400px;"></map>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $(document).on("ready", function(e) {
+
+    $( ".tagPicker" ).select2({});
+    var raster = new ol.layer.Tile({
+       source: new ol.source.OSM()
+    });
+
+    var source = new ol.source.Vector({wrapX: false});
+
+    var vector = new ol.layer.Vector({
+       source: source
+    });
+    var lat = $('.lat-field').val();
+    var lon = $('.lon-field').val();
+    var center = ol.proj.transform([18.81185, 45.443141], 'EPSG:4326', 'EPSG:3857');
+
+    if(lat != "" && lat != undefined && lon != "" && lon != undefined) {
+       center = ol.proj.transform([Number(lon), Number(lat)], 'EPSG:4326', 'EPSG:3857');
+    }
+
+    var map = new ol.Map({
+       layers: [raster, vector],
+       target: 'map',
+       view: new ol.View({
+
+           center: center,
+           zoom: 4
+       })
+    });
+
+    var draw;
+    function addInteraction() {
+        draw = new ol.interaction.Draw({
+            source: source,
+            type: 'Point'
+        });
+        map.addInteraction(draw);
+    }
+
+
+    if(lat != "" && lat != undefined && lon != "" && lon != undefined) {
+        source.addFeature(new ol.Feature(new ol.geom.Point(center)));
+    }
+
+    addInteraction();
+
+    draw.on('drawend',function(e){
+        source.clear();
+        //remover layer vector antiga, criar uma nova com o ponto e actualizar os campos lat/lon com o ponto
+        var lon_lat = ol.proj.transform(e.feature.getGeometry().getCoordinates(), 'EPSG:3857', 'EPSG:4326');
+        $('.lon-field').val(lon_lat[0]);
+        $('.lat-field').val(lon_lat[1]);
+    });
+
+    //acertar css do elemento de mouse position
+    var mousePosition = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(2),
+        projection: 'EPSG:4326',
+        target: document.getElementById('myposition'),
+        undefinedHTML: '&nbsp;'
+    });
+
+    map.addControl(mousePosition);
+
+  });
+</script>

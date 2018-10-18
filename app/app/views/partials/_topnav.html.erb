@@ -1,0 +1,113 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<!-- top navigation -->
+<div class="top_nav nav_menu">
+    <nav class="" role="navigation">
+      <div class="nav toggle">
+        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="">
+          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="initials small"><%= current_user.initials %></span><%= current_user.display_name %>
+            <span class=" fa fa-angle-down"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-usermenu pull-right">
+            <li><%= link_to 'Profile', edit_user_path(current_user) %></li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out pull-right"></i> Log Out
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="dropdown">
+          <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+            <li>
+              <a>
+                      <span class="image">
+                                        <%= image_tag "img.jpg" %>
+                                    </span>
+                      <span>
+                                        <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                      <span class="image">
+                                       <%= image_tag "img.jpg" %>
+                                    </span>
+                      <span>
+                                        <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                      <span class="image">
+                                       <%= image_tag "img.jpg" %>
+                                    </span>
+                      <span>
+                                        <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                      <span class="image">
+                                        <%= image_tag "img.jpg" %>
+                                    </span>
+                      <span>
+                                        <span>John Smith</span>
+                      <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+              </a>
+            </li>
+            <li>
+              <div class="text-center">
+                <a>
+                  <strong>See All Alerts</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+<!-- /top navigation -->

@@ -1,0 +1,55 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Name:</label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Email:</label>
+    <%= f.text_field :email, class: "form-control", readonly: @user.persisted? %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Password:</label>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Password Confirmation:</label>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <% if current_user.admin? %>
+    <div class="form-group">
+      <label class="control-label" for="name">Roles:</label>
+      <%= f.collection_select :role_ids, Role.all, :id, :code,{}, {class: "form-control tagPicker", multiple: true} %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+<script>
+$( ".tagPicker" ).select2({});
+</script>

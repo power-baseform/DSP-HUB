@@ -1,0 +1,93 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+    <div class="form-group">
+      <%= render 'partials/system_picker' %>
+    </div>
+    <%= form_tag comments_path, method: :get do %>
+      <div class="form-group small-group">
+        <%= select_tag :status, options_for_select(Comment.statuses.merge({"[status]": ""}), params[:status] || ""),{class: "form-control force-submit"} %>
+      </div>
+      <div class="form-group small-group">
+        <%= collection_select :challenge, :code, current_system.challenges.order(:codigo), :id, :code_name, {include_blank: "[Issue code]",
+          selected: current_system.has_code(params.try(:[],:challenge).try(:[], :code))}, {class: "form-control force-submit"} %>
+      </div>
+      <div class="form-group small-group">
+        <%= select_tag :kind, options_for_select(["comments","replies"], params[:kind] || "comments"),{class: "form-control force-submit"} %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="title_right">
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>List of Comments</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= paginate @comments %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+          <table class="table table-striped jambo_table">
+            <thead>
+              <tr>
+                <th>Participant</th>
+                <th>Challenge</th>
+                <th>Content</th>
+                <th>Has attachment</th>
+                <th>Responses</th>
+                <th><%= sortable("status", "Status") %></th>
+                <th><%= sortable("data", "Date") %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @comments.each.with_index do |comment, idx| %>
+                <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer openTr"  data-link="<%= comment_path(comment) %>">
+                  <td><%= comment.participant.nome %></td>
+                  <td><%= "#{comment.challenge.codigo}: #{comment.challenge.titulo}" %></td>
+                  <td><%= comment.comentario.truncate(20) %></td>
+                  <td class="pub_<%= comment.comment_attachment.present? %>"><%= comment.comment_attachment.present? ? "✔" : "✖" %></td>
+                  <td><%= comment.replies.size %></td>
+                  <td class="comment_<%=comment.status%>"><%= comment.status %></td>
+                  <td><%= comment.data %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".openTr").on("click", function(e) {
+    location.href = this.dataset.link;
+  });
+
+  $(".force-submit").on("change", function(e) {
+    $(this).closest("form").submit();
+  })
+</script>

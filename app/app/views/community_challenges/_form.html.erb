@@ -1,0 +1,88 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<%= form_for @community_challenge, :url => community_challenge_path do |f| %>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Title:</label>
+    <%= f.text_field :title, class:"form-control", readonly: true%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Body:</label>
+    <%= f.text_area :body, class:"form-control", readonly: true%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Participant:</label>
+    <b><%= link_to "#{@community_challenge.participant.nome} (#{@community_challenge.participant.email})", participant_path(@community_challenge.participant), class: "btn btn-default", style: "margin-left: 20px;"%>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Tags:</label>
+    <ul>
+    <% @community_challenge.tags.each do |t| %>
+      <li><b><%= t.tag %></b></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <div class="customLabel">Theme:</div>
+    <%= @community_challenge.scope.translated_code %>
+  </div>
+
+  <div class="form-group">
+    <div class="customLabel">Thumbnail:</div>
+    <% if @community_challenge.thumbnail.present?%>
+      <%= link_to community_challenge_thumb_path(@community_challenge.thumbnail.id), download: '' do %>
+        <%= image_tag community_challenge_thumb_path(@community_challenge.thumbnail.id), class: "thumb" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <div class="customLabel">Images:</div>
+    <% @community_challenge.community_challenge_images.each do |image| %>
+      <%= link_to community_challenge_image_path(image.id), download: '' do %>
+        <%= image_tag community_challenge_image_path(image.id), class: "thumb" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <div class="customLabel">Documents:</div>
+    <% @community_challenge.documents.each do |doc| %>
+      <%= link_to doc.nomeficheiro, community_document_path(doc.id), download: '' %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="name">Challenge:</label>
+    <b><%= link_to "#{@community_challenge.challenge.titulo}", challenge_path(@community_challenge.challenge), class: "btn btn-default", style: "margin-left: 20px;" if @community_challenge.challenge.present? %>
+    <%= f.grouped_collection_select :processo_fk, System.all, :challenges, :name, :id, :titulo,{include_blank: '--'}, {class: "form-control tagPicker"} %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+<script>
+$( ".tagPicker" ).select2({});
+</script>

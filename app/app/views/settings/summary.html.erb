@@ -1,0 +1,157 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+    <div class="form-group">
+      <%= render 'partials/system_picker' %>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Summary</b></h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Export', export_summary_path, class: 'btn btn-info' %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped jambo_table" style="width: 400px;">
+            <thead>
+              <tr>
+                <th colspan="2">Statistic</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pointer openTr" data-link="<%= challenges_path %>">
+                <th colspan="2">Total number of challenges</th>
+                <td><%= @challenges.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= participants_path %>">
+                <th colspan="2">Total number of participants</th>
+                <td><%= @participants.size %></td>
+              </tr>
+              <tr class="">
+                <th colspan="2">Total number of surveys answered</th>
+                <td><%= @answers.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(kind: 'comments') %>">
+                <th colspan="2">Total number of comments</th>
+                <td><%= @comments.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["pending"], kind: 'comments') %>">
+                <td></td>
+                <td class="<%= @comments.pending.size > 0 ? 'red' : ''%>">Pending approval</td>
+                <td class="<%= @comments.pending.size > 0 ? 'red' : ''%>"><%= @comments.pending.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["approved"], kind: 'comments') %>">
+                <td></td>
+                <td>Accepted</td>
+                <td><%= @comments.approved.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["removed"], kind: 'comments') %>">
+                <td></td>
+                <td>Removed</td>
+                <td><%= @comments.removed.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(kind: 'replies') %>">
+                <th colspan="2">Total number of replies</th>
+                <td><%= @replies.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["pending"], kind: 'replies') %>">
+                <td></td>
+                <td class="<%= @replies.pending.size > 0 ? 'red' : ''%>">Pending approval</td>
+                <td class="<%= @replies.pending.size > 0 ? 'red' : ''%>"><%= @replies.pending.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["approved"], kind: 'replies') %>">
+                <td></td>
+                <td>Accepted</td>
+                <td><%= @replies.approved.size %></td>
+              </tr>
+              <tr class="pointer openTr" data-link="<%= comments_path(status: Comment.statuses["removed"], kind: 'replies') %>">
+                <td></td>
+                <td>Removed</td>
+                <td><%= @replies.removed.size %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Gamification</b></h2>
+          <%
+            reader = GamificationReader.new current_system
+            reader.calculate_gamification_total
+          %>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Export all users', export_gamification_path, class: 'btn btn-info' %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="row">
+            <div class="col-sm-6">
+              <table class="table table-striped jambo_table" style="width: 400px;">
+                <thead>
+                  <tr>
+                    <th colspan="2">Statistic</th>
+                    <th>Average</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colspan="2">Overal Score</th>
+                    <td><%= reader.user_count.zero? ? 0 : reader.total / reader.user_count %></td>
+                  </tr>
+                  <% reader.dimensions.each do |dim| %>
+                    <tr>
+                      <th colspan="2"><%= t(dim) %></th>
+                      <td><%= reader.user_count.zero? ? 0 : reader.total_for_dimension(dim) / reader.user_count  %></td>
+                    </tr>
+                    <% reader.categories.each do |cat| %>
+                      <tr>
+                        <td></td>
+                        <td><%= t(cat) %></td>
+                        <td><%= reader.user_count.zero? ? 0 : reader.total_for_category(dim, cat) / reader.user_count  %></td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-sm-6">
+              <%= render "partials/radar", params: {showLegend: true} %>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".openTr").on("click", function(e) {
+    location.href = this.dataset.link;
+  });
+</script>

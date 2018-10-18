@@ -1,0 +1,60 @@
+en:
+  en: "English"
+  iw: "Hebrew"
+  ar: "Arabic"
+  es: "Spanish"
+  cat: "Catalan"
+  line:
+    text: "Line Text"
+  box:
+    text: "Box Text"
+  alternative:
+    menu: "Drop down single Selection"
+  multiple:
+    alternative: "Multiple Selection"
+  grouper: Grouper
+  PERSONAL: "Personal"
+  SOCIAL: "Social"
+  POLITICAL: "Political"
+  practical:
+    knowledge: "Know-how"
+  problem:
+    awareness: "Problem-aware"
+  ready:
+    for:
+      action: "Ready to act"
+  action:
+    attend:
+      meeting: "Attend Event"
+    click:
+      link: "Click on a link"
+    comment: "Comment"
+    follow:
+      issue: "Follow Issue"
+    got:
+      it:
+        section: "OK, I GOT IT!"
+    goto:
+      event: "Go to Event"
+    log: "Action log"
+    respond: "Respond to a Comment"
+    share:
+      issue:
+        email: "Share Issue on Email"
+        facebook: "Share Issue on Facebook"
+        google: "Share Issue on Google"
+        twitter: "Share Issue on Twitter"
+    submit:
+      query: "Submit Query"
+    view:
+      issue: "View Issue"
+    collect:
+      points:
+        section: "Collect points"
+    like: Like
+    dislike: Dislike
+    tip: Tip
+    download:
+      document: Download document
+    take:
+      survey: Take Survey

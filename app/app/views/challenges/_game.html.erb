@@ -1,0 +1,161 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="x_title">
+  <h2><b>Gamification for Challenge:</b> <%= @challenge.codigo %> - <%= @challenge.titulo %></h2>
+  <div class="nav navbar-right panel_toolbox">
+    <%= link_to 'Back', challenges_path, class: "btn btn-dark" %>
+    <%= link_to 'Import', "#", class: "btn btn-success importData" %>
+    <%= link_to 'Export', download_gamification_challenge_path(@challenge), class: "btn btn-info" %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+<%
+   @gamification = GamificationEditor.new @challenge.gamification
+%>
+  <%= form_for @gamification.form, {url: gamification_challenge_path(@challenge), method: :patch} do |f| %>
+    <%= f.file_field 'file', style: 'display:none' %>
+    <table class="table table-striped jambo_table gamification_table">
+      <thead>
+        <tr>
+          <th>Dimensions</th>
+          <% @gamification.dimensions.each do |dim| %>
+              <th style="text-align: center; border-left: 1px solid white;" colspan="<%= @gamification.categories.size %>"><%= dim.capitalize %></th>
+          <% end %>
+          <th rowspan="2" style="text-align: center;border-left: 1px solid white;vertical-align: middle">Total</th>
+        </tr>
+        <tr>
+          <th style="vertical-align:top;">Actions</th>
+          <% @gamification.dimensions.each do |dim|
+              @gamification.categories.each do |cat| %>
+                <th style="vertical-align: top; text-align: center; border-left: 1px solid white;" data-cat="<%= @gamification.build(dim, cat) %>"><%= t(cat) %></th>
+          <%  end
+            end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @gamification.actions.each do |key, action|
+          next if @gamification.must_skip(key, action) %>
+            <tr>
+              <td><%= t(action.name) %></td>
+              <% @gamification.dimensions.each do |dim|
+                  @gamification.categories.each do |cat| %>
+                    <td data-cat="<%= @gamification.build(dim, cat) %>">
+                      <%= f.number_field @gamification.build(dim, cat, action), class:"gamification-cell" %>
+                    </td>
+              <%  end
+                end %>
+                <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification) %></td>
+            </tr>
+        <% end %>
+
+        <% @challenge.surveys.order(:data_abertura).each do |survey| %>
+          <% action = @gamification.actions[:TAKE_SURVEY]%>
+          <tr>
+            <td><%= t(action.name) %> - <span class="info"><%= survey.nome %></span></td>
+            <% @gamification.dimensions.each do |dim|
+                @gamification.categories.each do |cat|
+                %>
+                  <td data-cat="<%= @gamification.build(dim, cat) %>">
+                    <%= f.number_field @gamification.build(dim, cat, action, survey.id), class:"gamification-cell" %>
+                  </td>
+            <% end
+              end %>
+              <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification, survey.id) %></td>
+          </tr>
+        <% end %>
+
+        <% @challenge.events.order(:data).each do |event| %>
+          <% action = @gamification.actions[:ATTEND_MEETING]%>
+          <tr>
+            <td><%= t(action.name) %> - <span class="info"><%= event.designacao %></span></td>
+            <% @gamification.dimensions.each do |dim|
+                @gamification.categories.each do |cat|
+                %>
+                  <td data-cat="<%= @gamification.build(dim, cat) %>">
+                    <%= f.number_field @gamification.build(dim, cat, action, event.id), class:"gamification-cell" %>
+                  </td>
+            <% end
+              end %>
+              <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification, event.id) %></td>
+          </tr>
+        <% end %>
+
+        <% @challenge.sections.order(:indice).each do |section| %>
+          <% action = @gamification.actions[:GOT_IT_SECTION] %>
+          <tr>
+            <td><%= t(action.name) %> - <span class="info"><%= section.titulo %></span></td>
+            <% @gamification.dimensions.each do |dim|
+                @gamification.categories.each do |cat| %>
+                  <td data-cat="<%= @gamification.build(dim, cat) %>">
+                    <%= f.number_field @gamification.build(dim, cat, action, section.id), class:"gamification-cell" %>
+                  </td>
+            <%  end
+              end %>
+              <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification, section.id) %></td>
+          </tr>
+        <% end %>
+
+        <% @challenge.links.each do |link| %>
+          <% action = @gamification.actions[:CLICK_LINK] %>
+          <tr>
+            <td><%= t(action.name) %> - <span class="info"><%= link %></span></td>
+            <% @gamification.dimensions.each do |dim|
+                @gamification.categories.each do |cat| %>
+                  <td data-cat="<%= @gamification.build(dim, cat) %>">
+                    <%= f.number_field @gamification.build(dim, cat, action, link), class:"gamification-cell" %>
+                  </td>
+            <%  end
+              end %>
+              <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification, link) %></td>
+          </tr>
+        <% end %>
+
+        <% @challenge.documents.from_challenge.each do |document| %>
+          <% action = @gamification.actions[:DOWNLOAD_DOCUMENT] %>
+          <tr>
+            <td><%= t(action.name) %> - <span class="info"><%= document.designacao %></span></td>
+            <% @gamification.dimensions.each do |dim|
+                @gamification.categories.each do |cat| %>
+                  <td data-cat="<%= @gamification.build(dim, cat) %>">
+                    <%= f.number_field @gamification.build(dim, cat, action, document.id), class:"gamification-cell" %>
+                  </td>
+            <%  end
+              end %>
+              <td data-total="<%= action.name %>" style="text-align: right"><%= action.total(@gamification, document.id) %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+    <%= f.submit 'save', class: 'btn btn-success' %>
+  <% end %>
+
+  <%= render "partials/radar", params: {showLegend: true, challenge: @challenge } %>
+</div>
+
+<script>
+  $(".importData").on("click", function(e) {
+    $(".new_gamification_form").find("input[type='file']").trigger("click");
+  });
+
+  $("input[name='gamification_form[file]']").on("change", function(e) {
+    $(this).closest("form").submit();
+  })
+</script>

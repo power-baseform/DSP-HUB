@@ -1,0 +1,107 @@
+<!--## Baseform
+## Copyright (C) 2018  Baseform
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+<div class="page-title">
+  <div class="title_left">
+  </div>
+
+  <div class="title_right">
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Comment from <b><%= @comment.participant.nome%></b> on challenge: <b><%= @comment.challenge.titulo %></b></h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= paginate @replies %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+          <%= link_to "#{@comment.participant.nome}(#{@comment.participant.email})", participant_path(@comment.participant) %> on <%= @comment.data %>
+          <div class="comment_<%=@comment.status%>"><%=@comment.status%></div>
+          <%= link_to "#{@comment.challenge.codigo}: #{@comment.challenge.titulo} (#{@comment.challenge.locale})", challenge_path(@comment.challenge) %>
+
+          </br><%= @comment.likes %> likes and <%= @comment.dislikes %> dislikes</br>
+
+          <div class="customLabel">Title</div>
+          <input type="text" class="form-control" readonly value="<%= @comment.title %>">
+          <div class="customLabel">Content</div>
+          <textarea class="form-control" readonly ><%= @comment.comentario %></textarea>
+
+          <%= link_to "Attachment", comment_attachment_path(@comment.comment_attachment.id) if @comment.comment_attachment.present? %>
+
+          </br></br>
+          <% if @comment.pending? %>
+            <%= link_to "approve", status_comment_path(@comment, status: "approve"), class: "btn btn-success" %>
+            <%= link_to "decline", status_comment_path(@comment, status: "decline"), class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to @comment.reverse_status, status_comment_path(@comment, status: "toggle"), class: "btn btn-#{@comment.reverse_status_label}" %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if @comment.original %>
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Replies</h2>
+            <div class="nav navbar-right panel_toolbox">
+              <%= paginate @replies %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="x_content">
+            <table class="table table-striped jambo_table">
+              <thead>
+                <tr>
+                  <th>Participant</th>
+                  <th>Challenge</th>
+                  <th>Content</th>
+                  <th>Has Attachment</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @replies.each.with_index do |comment, idx| %>
+                  <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer openTr"  data-link="<%= comment_path(comment) %>">
+                    <td><%= comment.participant.nome %></td>
+                    <td><%= "#{comment.challenge.codigo}: #{comment.challenge.titulo}" %></td>
+                    <td><%= comment.comentario.truncate(20) %></td>
+                    <td class="pub_<%= comment.comment_attachment.present? %>"><%= comment.comment_attachment.present? ? "✔" : "✖" %></td>
+                    <td class="comment_<%=comment.status%>"><%= comment.status %></td>
+                    <td><%= comment.data %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".openTr").on("click", function(e) {
+    location.href = this.dataset.link;
+  });
+</script>
