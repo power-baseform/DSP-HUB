@@ -15,3 +15,38 @@ Check out our [contributing guidelines](https://github.com/power-baseform/DSP-HU
 # Licenses
 
 Content is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) software is released under [GPLv3](https://choosealicense.com/licenses/gpl-3.0/) complete details, including attribution guidelines, contribution terms, and software and third-party licenses and permissions.
+
+# Build
+
+To run the DSP-HUB you first need to install [RVM](https://rvm.io/rvm/install) (Ruby version manager) in order to get the correct ruby version.
+
+```bash
+rvm install ruby-2.4.0
+rvm use 2.4.0
+```
+
+Then you need to have a postgres instance running locally, you can learn how to do that [here](https://www.postgresql.org/docs/9.3/static/tutorial-install.html).
+
+After that you are ready to run the ruby app.
+Go to the project root and start by running:
+
+```bash
+gem install bundler
+bundle install
+```
+
+Then you need to create the database
+
+```bash
+rake db:create
+rake db:schema:load
+rake db:seed
+```
+
+After that just run :
+
+```bash
+rails server
+```
+
+And the server should be available in localhost:3000 by default.
