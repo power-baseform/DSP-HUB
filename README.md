@@ -2,7 +2,7 @@
 
 The Power Digital Social Platform's HUB software is a backend management system for creating and managing content for one or several Power Water Communities DSPs. The HUB  allows authorized users (DSP admins) to configure a DSP's public website (the PUB) and mobile app (the MOB), manage their content, manage users, change their customization layers such as social participation, gamification, web layouts, and present engagement KPIs. Repositories are equally available for the PUB and MOB.
 
-For more details about the HUB software's specific design and implementation, please check the included documentation (pdf).
+For details about the HUB software's specific design and implementation, please check the included documentation (pdf).
 
 # Background
 
@@ -24,16 +24,16 @@ Content is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.
 
 # Build
 
-To run the DSP-HUB you first need to install [RVM](https://rvm.io/rvm/install) (Ruby version manager) in order to get the correct ruby version.
+To run the DSP-HUB, you first need to install [RVM](https://rvm.io/rvm/install) (Ruby Version Manager) in order to get the correct Ruby version.
 
 ```bash
 rvm install ruby-2.4.0
 rvm use 2.4.0
 ```
 
-Then you need to have a postgres instance running locally, you can learn how to do that [here](https://www.postgresql.org/docs/9.3/static/tutorial-install.html).
+Then you will need to have a Postgres instance running locally – you can learn how to do that [here](https://www.postgresql.org/docs/9.3/static/tutorial-install.html).
 
-After that you are ready to run the ruby app.
+After that, you are ready to run the Ruby app.
 Go to the project root and start by running:
 
 ```bash
@@ -41,7 +41,7 @@ gem install bundler
 bundle install
 ```
 
-Then you need to create the database
+At that point, you need to create the database
 
 ```bash
 rake db:create
@@ -49,10 +49,10 @@ rake db:schema:load
 rake db:seed
 ```
 
-After that just run :
+After that, just run :
 
 ```bash
 rails server
 ```
 
-And the server should be available in localhost:3000 by default.
+And the server should be available at localhost:3000 by default.
