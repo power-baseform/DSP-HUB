@@ -1,6 +1,6 @@
 # About
 
-The Power DSP's HUB software is a backend management system for creating and managing content, and running the social participation and gamification functionality of a POWER DSP.
+The Power DSP's HUB software is a backend management system for creating and managing content of the POWER project. The HUB tier allows authorized users to manage content of one or more of the digital social platforms of the Power ecosystem. As a backend tier, HUB allows to change DSP’s customization layers such as social participation, gamification, web layouts as well as presenting engagement KPI’s.
 
 # Background
 
