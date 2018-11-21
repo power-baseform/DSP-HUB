@@ -1,12 +1,18 @@
 # About
 
-The Power DSP's HUB software is a backend management system for creating and managing content of the POWER project. The HUB tier allows authorized users to manage content of one or more of the digital social platforms of the Power ecosystem. As a backend tier, HUB allows to change DSP’s customization layers such as social participation, gamification, web layouts as well as presenting engagement KPI’s.
+The Power Digital Social Platform's HUB software is a backend management system for creating and managing content for one or several Power Water Communities DSPs. The HUB  allows authorized users (DSP admins) to configure a DSP's public website (the PUB) and mobile app (the MOB), manage their content, manage users, change their customization layers such as social participation, gamification, web layouts, and present engagement KPIs. Repositories are equally available for the PUB and MOB.
+
+For more details about the HUB software's specific design and implementation, please check the included documentation (pdf).
 
 # Background
 
-Power Project open-source software repository was created and are curated by the Power (Political and social awareness on water environmental challenges) Project members and partners of which Baseform is leading the software development of this Digital Social Platform. The Digital Social Platform includes three related but separate software repositories and projects: HUB, the management backend; PUB, the web frontend for the general public and MOB, the mobile app counterpart. 
+The Power Water Communities DSP open-source software repository was created and is curated by the Power (Political and social awareness on water environmental challenges) Project and its partners, with development led by Baseform. The Digital Social Platform (DSP) is the project’s main tool to be made available to cities, utilities, public agencies or water-related interest groups, aiming at an active and relevant contribution to the creation of digital communities around themes specifically related to water and the quality of life of local populations. 
 
-For more information, check out http://www.power-h2020.eu
+Such DSPs are typically aimed at community members, activists, volunteers, municipal officials and representatives, water professionals and experts, as well as regional, national or international-level policy-makers, politicians and other stakeholders. A specific instance of the DSP is made available through a dedicated Water Community website and an accompanying mobile app, designed to fulfill both informative, engagement and participatory roles. 
+
+The Power Water Communities DSP includes three related but separate software repositories: HUB, a content management back-end; PUB, the web front-end for the general public; and MOB, its mobile app counterpart.   
+
+POWER is a Research and Innovation Action, supporting the EIP Water Action Group, NetwercH2O and City Blueprints. It is funded by the European Commission under the H2020 Programme, Call ICT10-2015 ‘Collective Awareness Platforms for Sustainability and Social Innovation’ - Topic c) Digital Social Platforms (DSP). For more information and to access any of the existing Power Water Communities DSPs, please go to http://www.power-h2020.eu
 
 # Contributing
 
