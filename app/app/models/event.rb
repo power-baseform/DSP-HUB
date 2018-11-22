@@ -27,4 +27,6 @@ class Event < ActiveRecord::Base
 
   has_many :participant_events, foreign_key: :fkevento, dependent: :delete_all
   has_many :participants, through: :participant_events
+
+  validates_length_of :designacao, maximum: 200 
 end

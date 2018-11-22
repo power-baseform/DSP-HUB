@@ -38,3 +38,14 @@ admin.roles << Role.all
 
 u.save
 admin.save(validate: false)
+
+Language.create(locale: "en")
+Language.create(locale: "es")
+Language.create(locale: "cat")
+Language.create(locale: "ar")
+Language.create(locale: "iw")
+
+System.all.each do |s|
+  s.languages = Language.all
+  s.save
+end

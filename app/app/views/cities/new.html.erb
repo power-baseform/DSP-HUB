@@ -15,8 +15,25 @@
 ## along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
 
 
-<h1>New City</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', cities_path %>
+<div class="page-title">
+  <div class="title_left">
+  </div>
+</div>
+<div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><b>Creating new City</h2>
+          <div class="nav navbar-right panel_toolbox">
+            <%= link_to 'Back', cities_path, class: "btn btn-dark" %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <%= render "form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

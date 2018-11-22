@@ -66,6 +66,8 @@ Rails.application.routes.draw do
 
 
   # admin
+  get :languages, to: "settings#languages", as: :languages
+  patch :update_languages, to: "settings#update_languages", as: :update_languages
   get :properties, to: "settings#properties", as: :properties
   patch :properties, to: "settings#save_properties", as: :save_properties
   patch :properties_no_locale, to: "settings#save_properties_no_locale", as: :save_properties_no_locale

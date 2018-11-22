@@ -21,6 +21,21 @@ class SettingsController < Admin::UsersController
     @props = SiteProp.find_by(system: current_system)
   end
 
+  def update_languages
+    respond_to do |format|
+      if save_languages
+        format.html { redirect_to languages_path, notice: 'System was successfully updated.' }
+        format.json { render :languages, status: :created, location: current_system }
+      else
+        format.html { redirect_to languages_path, notice: 'Something went wrong' }
+        format.json { render json: current_system.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def languages
+  end
+
   def summary
     @challenges = current_system.challenges
     @participants = current_system.participants
@@ -174,5 +189,21 @@ class SettingsController < Admin::UsersController
         format.html { redirect_to settings_path, alert: 'Something went wrong' }
       end
     end
+  end
+
+  private
+
+  def save_languages
+    language_ids = params[:system][:language_ids].reject(&:empty?)
+
+    removed_ids = current_system.language_ids - language_ids
+    current_system.system_languages.where(language_id: removed_ids).delete_all
+    new_ids = language_ids - current_system.language_ids
+
+    new_ids.each do |t|
+      SystemLanguage.create(language_id: t, system: current_system)
+    end
+
+    current_system.save
   end
 end

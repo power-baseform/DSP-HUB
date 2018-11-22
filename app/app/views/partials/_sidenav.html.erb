@@ -78,6 +78,11 @@
                 <i class="fa fa-paper-plane"></i> Community Challenges
               <% end %>
             </li>
+            <li>
+              <%= link_to cities_path do %>
+                <i class="fa fa-building"></i> Cities
+              <% end %>
+            </li>
           </ul>
         </div>
         <% if current_user.admin? %>
@@ -86,15 +91,11 @@
             <ul class="nav side-menu">
               <li><a><i class="fa fa-cogs"></i> DSP Properties <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu" style="display: none">
+                  <li><%= link_to 'Languages', languages_path %></li>
                   <li><%= link_to 'Text properties', properties_path %></li>
                   <li><%= link_to 'About section', about_section_index_path %></li>
-                  <li><%= link_to 'Gamification & Cover Image', settings_path %></li>
+                  <li><%= link_to 'Website Settings', settings_path %></li>
                 </ul>
-              </li>
-              <li>
-                <%= link_to cities_path do %>
-                  <i class="fa fa-building"></i> Cities
-                <% end %>
               </li>
               <li>
                 <%= link_to users_path do %>

@@ -27,6 +27,9 @@ class System < ActiveRecord::Base
 
   has_many :comments, through: :challenges
 
+  has_many :system_languages
+  has_many :languages, through: :system_languages
+
   def has_code code
     return "" unless code.present?
     return "" unless challenges.find_by(pkid: code).present?

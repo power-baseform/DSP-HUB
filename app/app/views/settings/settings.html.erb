@@ -44,10 +44,12 @@
               </div>
             <% end %>
 
-            <div class="form-group">
-              <label class="control-label">Show registration form:</label>
-              <%= f.check_box :show_registration_form, {class: "checkbox", checked: @properties.show_registration_form}, "true", "false" %>
-            </div>
+            <% @properties.non_localized_properties_no_text.each do |prop| %>
+                <div class="form-group">
+                  <label class="control-label"><%= prop %></label>
+                  <%= f.check_box prop, {class: "checkbox", checked: @properties.checkbox_value(prop)}, "true", "false" %>
+                </div>
+            <% end %>
 
             <div class="form-group">
               <div class="col-md-6 col-sm-6 col-xs-12">
@@ -58,23 +60,23 @@
         </div>
       </div>
 
-      <div class="x_panel">
-        <div class="x_title">
-          <h2><b>Homepage image background:</h2>
-          <div class="nav navbar-right panel_toolbox">
-            <%= link_to 'Change', "#", class: "btn btn-success triggerInput" %>
-            <%= form_tag save_properties_no_locale_path, method: :patch, multipart: true do %>
-              <%= file_field_tag :image , {style: 'display: none;'}%>
-            <% end %>
+      <% if @properties.slider_image.present? %>
+        <div class="x_panel">
+          <div class="x_title">
+            <h2><b>Homepage image background:</h2>
+            <div class="nav navbar-right panel_toolbox">
+              <%= link_to 'Change', "#", class: "btn btn-success triggerInput" %>
+              <%= form_tag save_properties_no_locale_path, method: :patch, multipart: true do %>
+                <%= file_field_tag :image , {style: 'display: none;'}%>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
+          <div class="x_content">
+            <%= image_tag home_image_url(@properties.slider_image), class: 'home_image' %>
+          </div>
         </div>
-        <div class="x_content">
-          <%= image_tag home_image_url(@properties.slider_image), class: 'home_image' %>
-        </div>
-      </div>
-
-
+      <% end %>
     </div>
   </div>
 </div>

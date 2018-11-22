@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   paginates_per 20
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable, :timeoutable, :timeout_in => 30.minutes
+  devise :database_authenticatable, :rememberable, :validatable, :timeoutable, :timeout_in => 30.minutes
 
   pg_search_scope :search_for, against: [:email]
 

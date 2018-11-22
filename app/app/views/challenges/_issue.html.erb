@@ -85,7 +85,7 @@
 
     <div class="form-group">
       <label class="control-label" for="name">Language:</label>
-      <%= f.select :locale, options_for_select(I18n.available_locales, @challenge.locale), {}, class: "form-control" %>
+      <%= f.select :locale, options_for_select(current_system.languages.pluck(:locale), @challenge.locale), {}, class: "form-control" %>
       <p class="error"><%= @challenge.errors.messages[:locale].try(:first) %></p>
     </div>
 

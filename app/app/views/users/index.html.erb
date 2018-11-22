@@ -51,15 +51,15 @@
               <tr>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Last sign in</th>
+                <th>Last action</th>
               </tr>
             </thead>
             <tbody>
-              <% @users.order("online DESC  NULLS LAST, last_sign_in_at DESC NULLS LAST").each.with_index do |user, idx| %>
+              <% @users.order("online DESC  NULLS LAST, last_action DESC NULLS LAST").each.with_index do |user, idx| %>
                 <tr class="<%= idx % 2 == 0 ? "odd" : "even" %> pointer openTr <%= user.is_online? ? 'online' : '' %>"  data-link="<%= edit_user_path(user) %>">
                   <td><%= user.email %></td>
                   <td><%= user.roles_to_string %></td>
-                  <td><%= user.last_sign_in_at %></td>
+                  <td><%= user.last_action %></td>
                 </tr>
               <% end %>
             </tbody>

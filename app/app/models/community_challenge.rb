@@ -16,6 +16,7 @@
 
 
 class CommunityChallenge < ActiveRecord::Base
+  before_save :follow_challenge, if: :processo_fk_changed?
   paginates_per 20
 
   self.table_name = "processos.community_processo"
@@ -35,4 +36,17 @@ class CommunityChallenge < ActiveRecord::Base
   has_many :documents, foreign_key: :community_processo_fk, class_name: 'CommunityDocument'
 
   belongs_to :thumbnail, foreign_key: :temp_thumb_fk, class_name: 'TemporaryThumbnail'
+
+  private
+
+  def follow_challenge
+    pc = ParticipantChallenge.new
+
+    pc.data = Date.today
+    pc.participant = self.participant
+    pc.challenge = self.challenge
+    pc.is_following = true
+
+    pc.save
+  end
 end

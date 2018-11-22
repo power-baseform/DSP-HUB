@@ -16,11 +16,14 @@
 
 
 class ParticipantChallenge < ActiveRecord::Base
+  include SequencePrimaryKey
+  before_create :set_primary_key
+
   self.table_name = "participantes.r_participante_processo"
   self.inheritance_column = :_type_disabled
 
   scope :following, -> {where(is_following: true)}
-  
+
   belongs_to :participant, foreign_key: :fkparticipante
   belongs_to :challenge, foreign_key: :fkprocesso
 end

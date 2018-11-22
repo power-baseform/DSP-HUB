@@ -32,9 +32,9 @@ class EventsController < Admin::UsersController
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to edit_event_challenge_path(challenge: @challenge, event: @event), notice: 'Event was successfully updated.' }
-        format.json { render :edit_event  , status: :ok, location: @event }
+        format.json { render :edit  , status: :ok, location: @event }
       else
-        format.html { render :edit_event }
+        format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
