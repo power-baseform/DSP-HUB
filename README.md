@@ -1,6 +1,6 @@
 # About
 
-The Power Digital Social Platform's HUB software is a backend management system for creating and managing content for one or several Power Water Communities DSPs. The HUB  allows authorized users (DSP admins) to configure a DSP's public website (the PUB) and mobile app (the MOB), manage their content, manage users, change their customization layers such as social participation, gamification, web layouts, and present engagement KPIs. Training videos on how to use the DSP-HUB are avaliable here: vimeo.com/channels/powertraining .
+The Power Digital Social Platform's HUB software is a backend management system for creating and managing content for one or several Power Water Communities DSPs. The HUB  allows authorized users (DSP admins) to configure a DSP's public website (the PUB) and mobile app (the MOB), manage their content, manage users, change their customization layers such as social participation, gamification, web layouts, and present engagement KPIs. Training videos on how to use the DSP-HUB are available here: vimeo.com/channels/powertraining .
 Repositories are equally available for the PUB and MOB.
 
 For details about the HUB software's specific design and implementation, please check the included documentation (pdf).
